@@ -2,7 +2,7 @@
 
 다음은 num1과 num2의 열을 더해서 10이상이 되는 행을 검색하는 쿼리문이다.
 ```
-select *, num1 + num2 a add from sampleTable
+select *, num1 + num2 a add from sample_table
 where num1 + num2 >= 10;
 ```
 select문에서 별명을 붙였으니 where에서 add로 지정하면 되지 않을까 생각할 수 있지만, 실제로는 add라는 열이 존재하지 않는다는 에러가 발생한다.
@@ -14,7 +14,7 @@ where 에서의 행 선택, select 에서의 열 선택은 데이터베이스 �
 
 order by는 서버에서 내부적으로 가장 나중에 처리된다. 즉, select보다 나중에 처리되기 때문에 select에서 지정한 별명을 order by에서도 사용할 수 있다.
 ```
-select *, num1 + num2 as add from sampleTable
+select *, num1 + num2 as add from sample_table
 order b add desc;
 ```
 결론적으로 select 쿼리의 내부처리 순서는 where -> select(별명을 지정) -> order by 순서이다.
