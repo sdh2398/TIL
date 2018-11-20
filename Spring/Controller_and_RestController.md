@@ -10,10 +10,14 @@
 @Controller
 @RequestMapping("user")
 public class UserController {
+  @Autowired
+  private UserService userService;
+
   @GetMapping("/{id}")
   public @ResponseBody User getUser(@PathVariable int id) {
     return userService.get(id);
   }
+
 }
 ```
 요청 처리 메소드는 @ResponseBody 애노테이션을 달아주어 자동적으로 HttpResponse 오브젝트로 리턴하도록 직렬화 해준다.
@@ -24,10 +28,18 @@ public class UserController {
 @RestController
 @RequestMapping("user")
 public class UserController {
+  @Autowired
+  private UserService userService;
+
   @GetMapping("/{id}")
   public User getUser(@PathVariable int id) {
     return userService.get(id);
   }
+
 }
 ```
 컨트롤러에 @RestController를 붙임으로써 @ResponseBody가 없어도 요청 처리 메소드들은 자동으로 HttpResponse객체로 직렬화 되어 반환된다.
+
+참고
+https://www.baeldung.com/spring-controller-vs-restcontroller
+http://highcode.tistory.com/24
